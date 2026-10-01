@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: springboot-ka
+  namespace: spring
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: springboot-ka
+
+  template:
+    metadata:
+      labels:
+        app: springboot-ka
+
+    spec:
+      containers:
+        - name: springboot-ka
+          image: spring8.0:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
